@@ -13,7 +13,7 @@ const Header = () => {
       {/* Logo Section */}
       <div className="flex items-center gap-2">
         <IconAnchor className="w-10 h-10 text-bright-sun-400 drop-shadow-lg" stroke={2.6} />
-        <span className="text-bright-sun-400 text-3xl font-extrabold tracking-wide">DreamJob</span>
+        <span className="text-bright-sun-400 text-3xl font-extrabold tracking-wide">TalentBridge</span>
       </div>
 
       <NavLinks />

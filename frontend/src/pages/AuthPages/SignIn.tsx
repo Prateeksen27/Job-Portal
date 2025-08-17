@@ -90,7 +90,7 @@ export default function SignInPage() {
                 <div className="text-center px-8">
                     <div className="flex items-center gap-2">
                         <IconAnchor className="w-10 h-10 text-bright-sun-400 drop-shadow-lg" stroke={2.6} />
-                        <h1 className="text-white font-bold text-3xl">Welcome to <span className="text-bright-sun-400 text-3xl font-extrabold tracking-wide">DreamJob</span></h1>
+                        <h1 className="text-white font-bold text-3xl">Welcome to <span className="text-bright-sun-400 text-3xl font-extrabold tracking-wide">TalentBridge</span></h1>
                     </div>
                     <p className="text-mine-shaft-300">
                         Find your dream job with us

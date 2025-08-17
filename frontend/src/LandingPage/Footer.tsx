@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col items-start gap-4">
           <div className="flex items-center gap-2">
             <IconAnchor className="w-6 h-6 text-bright-sun-400 drop-shadow-lg" stroke={2.6} />
-            <span className="text-bright-sun-400 text-2xl font-extrabold tracking-wide">DreamJob</span>
+            <span className="text-bright-sun-400 text-2xl font-extrabold tracking-wide">TalentBridge</span>
           </div>
           <p className="text-mine-shaft-300 max-w-xs">
             Your one-stop platform to land your dream job effortlessly. Stay connected and grow with us.
