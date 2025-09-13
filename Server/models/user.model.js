@@ -22,5 +22,5 @@ const userSchema = new mongoose.Schema({
     collection: 'admin'
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('job', userSchema);
 export default User;
