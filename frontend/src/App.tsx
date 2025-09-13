@@ -2,7 +2,7 @@ import { createTheme, MantineProvider, Text } from '@mantine/core';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import '@mantine/core/styles.css';
-// import '@mantine/tiptap/styles.css';
+import '@mantine/tiptap/styles.css';
 // ‼️ import carousel styles after core package styles
 import '@mantine/carousel/styles.css';
 import SignInForm from './pages/AuthPages/SignIn';
