@@ -25,7 +25,7 @@ const Profile = () => {
       {/* Banner + Avatar */}
       <div className="relative">
         <img
-          className="w-full h-48 sm:h-64 md:h-72 object-cover"
+          className="w-full rounded-t-lg h-48 sm:h-64 md:h-72 object-cover"
           src={banner}
           alt="Banner"
         />

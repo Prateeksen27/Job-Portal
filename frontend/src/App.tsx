@@ -5,6 +5,7 @@ import '@mantine/core/styles.css';
 import '@mantine/tiptap/styles.css';
 // ‼️ import carousel styles after core package styles
 import '@mantine/carousel/styles.css';
+import '@mantine/dates/styles.css';
 import SignInForm from './pages/AuthPages/SignIn';
 import SignUpPage from './pages/AuthPages/SignUp';
 import { Toaster } from 'react-hot-toast';
@@ -15,6 +16,11 @@ import Footer from './LandingPage/Footer';
 import FindTalent from './pages/FindTalent';
 import TalentProfile from './find-talent/TalentProfile';
 import PostJobPage from './pages/PostJobPage';
+import { JobPage } from './pages/JobPage';
+import ApplyJobPage from './pages/ApplyJobPage';
+import CompanyPage from './pages/CompanyPage';
+import PostedJobs from './pages/PostedJobs';
+import JobHistoryPage from './pages/JobHistoryPage';
 
 // ‼️ import tiptap styles after core package styles
 export default function App() {
@@ -56,18 +62,23 @@ export default function App() {
       <Toaster />
       <Router>
         <div className='bg-mine-shaft-950  font-[Poppins]'>
-        <Header />
+        {isAuthenticated && <Header />}
         <Routes>
           <Route path='/' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
           <Route path="/find-jobs" element={<FindJobs />} />    
+          <Route path="/jobs" element={<JobPage />} />    
+          <Route path="/apply-job" element={<ApplyJobPage />} />    
+          <Route path="/posted-jobs" element={<PostedJobs />} />    
           <Route path="/find-talent" element={<FindTalent />} />      
+          <Route path="/history" element={<JobHistoryPage />} />      
+          <Route path="/company-profile" element={<CompanyPage />} />      
           <Route path="/talent-profile/:id" element={<TalentProfile />} />   
           <Route path="/post-job" element={<PostJobPage />} />   
-          <Route path='/login' element={!isAuthenticated?<SignInForm />:<Navigate to='/' />} />
-          <Route path='/signup'element={!isAuthenticated?<SignUpPage />:<Navigate to='/' />}/>
+          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignInForm />} />
+          <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUpPage />}/>
           <Route path='*' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
         </Routes>
-        <Footer />
+        {isAuthenticated && <Footer />}
         </div>
       </Router>
     </MantineProvider>
