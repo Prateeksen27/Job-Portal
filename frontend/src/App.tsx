@@ -65,15 +65,15 @@ export default function App() {
         {isAuthenticated && <Header />}
         <Routes>
           <Route path='/' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
-          <Route path="/find-jobs" element={<FindJobs />} />    
-          <Route path="/jobs" element={<JobPage />} />    
-          <Route path="/apply-job" element={<ApplyJobPage />} />    
-          <Route path="/posted-jobs" element={<PostedJobs />} />    
-          <Route path="/find-talent" element={<FindTalent />} />      
-          <Route path="/history" element={<JobHistoryPage />} />      
-          <Route path="/company-profile" element={<CompanyPage />} />      
-          <Route path="/talent-profile/:id" element={<TalentProfile />} />   
-          <Route path="/post-job" element={<PostJobPage />} />   
+          <Route path="/find-jobs" element={isAuthenticated?<FindJobs />:<Navigate to='/login' />} />    
+          <Route path="/jobs" element={isAuthenticated?<JobPage />:<Navigate to='/login' />} />    
+          <Route path="/apply-job" element={isAuthenticated?<ApplyJobPage />:<Navigate to='/login' />} />    
+          <Route path="/posted-jobs" element={isAuthenticated?<PostedJobs />:<Navigate to='/login' />} />    
+          <Route path="/find-talent" element={isAuthenticated?<FindTalent />:<Navigate to='/login' />} />      
+          <Route path="/history" element={isAuthenticated?<JobHistoryPage />:<Navigate to='/login' />} />      
+          <Route path="/company-profile" element={isAuthenticated?<CompanyPage />:<Navigate to='/login' />} />      
+          <Route path="/talent-profile/:id" element={isAuthenticated?<TalentProfile />:<Navigate to='/login' />} />   
+          <Route path="/post-job" element={isAuthenticated?<PostJobPage />:<Navigate to='/login' />} />   
           <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignInForm />} />
           <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUpPage />}/>
           <Route path='*' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
