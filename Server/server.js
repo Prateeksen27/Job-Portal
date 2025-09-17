@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: "https://job-portal-nfey.onrender.com",
+  origin: "https://job-portal-one-sooty.vercel.app",
   credentials: true
 }));
 app.use(express.json());
