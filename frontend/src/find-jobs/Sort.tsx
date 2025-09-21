@@ -10,13 +10,15 @@ export const Sort = ()=> {
   });
 
   const options = opt.map((item) => (
+   
     <Combobox.Option className='text-xs' value={item} key={item}>
       {item}
     </Combobox.Option>
+
   ));
 
   return (
-    <>
+    <div className='flex sm:flex-col'>
       <Combobox
         store={combobox}
         width={150}
@@ -38,6 +40,6 @@ export const Sort = ()=> {
           <Combobox.Options>{options}</Combobox.Options>
         </Combobox.Dropdown>
       </Combobox>
-    </>
+    </div>
   );
 }

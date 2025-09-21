@@ -21,7 +21,7 @@ const TalentCard = ({ data, cardKey, posted,invited }: any) => {
   const [value, setValue] = useState<string | null>(null);
   const ref = useRef<HTMLInputElement>(null)
   return (
-    <div className="bg-mine-shaft-900 p-4 w-80 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-mine-shaft-900 p-4 md:w-80 sm:w-full rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
       {/* Header */}
       <div className="flex justify-between items-start mb-3">
         <div className="flex gap-3 items-center">

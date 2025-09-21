@@ -9,13 +9,13 @@ const Jobs = () => {
     <div className="p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-semibold">Recommended Jobs</h2>
+        <h2 className="md:text-2xl sm:text-lg font-semibold">Recommended Jobs</h2>
         <Sort />
       </div>
       <Divider size="xs" color="mine-shaft.7" className="mb-8" />
 
       {/* Jobs Flexbox */}
-      <div className="w-full flex flex-wrap gap-2 justify-center md:justify-start">
+      <div className="w-full flex flex-wrap gap-6 flex-1 p-6 justify-center md:justify-start">
         {jobList.map((list, index) => (
           <JobCard list={list} key={index} />
         ))}

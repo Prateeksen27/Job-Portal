@@ -15,7 +15,7 @@ const JobCard = (props: any) => {
     <Link to="/jobs">
       <div
         key={props.key}
-        className="bg-mine-shaft-900 p-4 w-72 h-60 gap-3 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
+        className="bg-mine-shaft-900 p-4 sm:w-full  md:w-80 h-60 gap-3 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
       >
         {/* Top Section */}
         <div>

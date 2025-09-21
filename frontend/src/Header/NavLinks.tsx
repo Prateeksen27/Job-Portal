@@ -9,6 +9,7 @@ const NavLinks = ({ mobile = false, onClick = () => {} }) => {
     { name: 'Find Talent', path: '/find-talent' },
     { name: 'Post Job', path: '/post-job' },
     { name: 'Posted Jobs', path: '/posted-jobs' },
+    { name: 'History', path: '/history' },
 
   ]
 
