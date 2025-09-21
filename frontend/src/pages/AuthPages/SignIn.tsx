@@ -4,7 +4,6 @@ import { toast } from "react-hot-toast";
 import { em } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
-
 export default function SignInPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

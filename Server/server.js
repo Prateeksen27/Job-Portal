@@ -8,10 +8,16 @@ import bodyParser from 'body-parser';
 dotenv.config();
 
 const app = express();
-app.use(cors({
-  origin: "https://job-portal-one-sooty.vercel.app",
-  credentials: true
-}));
+const allowed = ["https://job-portal-one-sooty.vercel.app","http://localhost:3000"]
+
+app.use(
+  cors({
+    origin: allowed,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // important for cookies/session
+  })
+);
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
