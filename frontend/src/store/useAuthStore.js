@@ -10,7 +10,7 @@ export const useAuthStore = create(
       user: null,
       isAuthenticated: false,
 
-      login: async (email,password) => {
+      login: async ({email,password}) => {
         const loadingToast = toast.loading("Logging in...");
         try {
           const response = await axiosInstance.post("/auth/login", {
@@ -25,7 +25,7 @@ export const useAuthStore = create(
         }
       },
 
-      signUp: async (username,email,password) => {
+      signUp: async ({username,email,password}) => {
         const loadingToast = toast.loading("Signing up...");
         try {
           const response = await axiosInstance.post("/auth/register", {

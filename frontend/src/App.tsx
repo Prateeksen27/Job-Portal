@@ -22,6 +22,7 @@ import CompanyPage from './pages/CompanyPage';
 import PostedJobs from './pages/PostedJobs';
 import JobHistoryPage from './pages/JobHistoryPage';
 import SignUpPage from './pages/AuthPages/SignUpPage';
+import SignInPage from './pages/AuthPages/SignInPage';
 
 // ‼️ import tiptap styles after core package styles
 export default function App() {
@@ -75,7 +76,7 @@ export default function App() {
           <Route path="/company-profile" element={isAuthenticated?<CompanyPage />:<Navigate to='/login' />} />      
           <Route path="/talent-profile/:id" element={isAuthenticated?<TalentProfile />:<Navigate to='/login' />} />   
           <Route path="/post-job" element={isAuthenticated?<PostJobPage />:<Navigate to='/login' />} />   
-          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignInForm />} />
+          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignInPage />} />
           <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUpPage />}/>
           <Route path='*' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
         </Routes>
