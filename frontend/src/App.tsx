@@ -7,7 +7,7 @@ import '@mantine/tiptap/styles.css';
 import '@mantine/carousel/styles.css';
 import '@mantine/dates/styles.css';
 import SignInForm from './pages/AuthPages/SignIn';
-import SignUpPage from './pages/AuthPages/SignUp';
+// import SignUpPage from './pages/AuthPages/SignUp';
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/useAuthStore';
 import FindJobs from './pages/FindJobs';
@@ -21,6 +21,7 @@ import ApplyJobPage from './pages/ApplyJobPage';
 import CompanyPage from './pages/CompanyPage';
 import PostedJobs from './pages/PostedJobs';
 import JobHistoryPage from './pages/JobHistoryPage';
+import SignUpPage from './pages/AuthPages/SignUpPage';
 
 // ‼️ import tiptap styles after core package styles
 export default function App() {
