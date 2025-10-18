@@ -6,7 +6,7 @@ import '@mantine/tiptap/styles.css';
 // ‼️ import carousel styles after core package styles
 import '@mantine/carousel/styles.css';
 import '@mantine/dates/styles.css';
-import SignInForm from './pages/AuthPages/SignIn';
+
 // import SignUpPage from './pages/AuthPages/SignUp';
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/useAuthStore';
@@ -21,8 +21,12 @@ import ApplyJobPage from './pages/ApplyJobPage';
 import CompanyPage from './pages/CompanyPage';
 import PostedJobs from './pages/PostedJobs';
 import JobHistoryPage from './pages/JobHistoryPage';
-import SignUpPage from './pages/AuthPages/SignUpPage';
 import SignInPage from './pages/AuthPages/SignInPage';
+import SignUpPage from './pages/AuthPages/SignUpPage';
+import ProfilePage from './pages/ProfilePage';
+
+
+
 
 // ‼️ import tiptap styles after core package styles
 export default function App() {
@@ -74,9 +78,10 @@ export default function App() {
           <Route path="/find-talent" element={isAuthenticated?<FindTalent />:<Navigate to='/login' />} />      
           <Route path="/history" element={isAuthenticated?<JobHistoryPage />:<Navigate to='/login' />} />      
           <Route path="/company-profile" element={isAuthenticated?<CompanyPage />:<Navigate to='/login' />} />      
-          <Route path="/talent-profile/:id" element={isAuthenticated?<TalentProfile />:<Navigate to='/login' />} />   
+          <Route path="/talent-profile/:id" element={isAuthenticated?<TalentProfile />:<Navigate to='/login' />} />  
+          <Route path="/profile" element={isAuthenticated?<ProfilePage />:<Navigate to='/login' />} /> 
           <Route path="/post-job" element={isAuthenticated?<PostJobPage />:<Navigate to='/login' />} />   
-          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignInPage />} />
+          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignUpPage />} />
           <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUpPage />}/>
           <Route path='*' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
         </Routes>
