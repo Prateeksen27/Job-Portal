@@ -24,6 +24,8 @@ import JobHistoryPage from './pages/JobHistoryPage';
 import SignInPage from './pages/AuthPages/SignInPage';
 import SignUpPage from './pages/AuthPages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
+import Login from './SignUpLogin/Login';
+import SignUp from './SignUpLogin/SignUp';
 
 
 
@@ -81,8 +83,8 @@ export default function App() {
           <Route path="/talent-profile/:id" element={isAuthenticated?<TalentProfile />:<Navigate to='/login' />} />  
           <Route path="/profile" element={isAuthenticated?<ProfilePage />:<Navigate to='/login' />} /> 
           <Route path="/post-job" element={isAuthenticated?<PostJobPage />:<Navigate to='/login' />} />   
-          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignUpPage />} />
-          <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUpPage />}/>
+          <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<Login />} />
+          <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUp />}/>
           <Route path='*' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
         </Routes>
         {isAuthenticated && <Footer />}

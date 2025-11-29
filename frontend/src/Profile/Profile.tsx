@@ -24,6 +24,7 @@ const Profile = () => {
         skills,
     } = profile
     const [edit, setEdit] = useState([false, false, false, false, false]);
+    const [skillsData, setSkillsData] = useState<string[]>(skills);
     const handleEdit = (i: any) => {
         const newEdit = [...edit];
         newEdit[i] = !newEdit[i];
@@ -31,7 +32,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="w-full  mx-auto">
+        <div className="w-4/5  mx-auto">
             {/* Banner + Avatar */}
             <div className="relative">
                 <img
@@ -113,7 +114,7 @@ const Profile = () => {
                     </Tooltip>
                 </h2>
                 <div className="flex flex-wrap gap-2">
-                    {!edit[2] ? skills.map((skill, i) => (
+                    {!edit[2] ? skillsData.map((skill, i) => (
                         <div
                             key={i}
                             className="bg-bright-sun-300 text-xs sm:text-sm font-medium bg-opacity-15 rounded-3xl text-bright-sun-400 px-3 py-1"
@@ -125,6 +126,8 @@ const Profile = () => {
                         placeholder="Enter tag"
                         defaultValue={skills}
                         clearable
+                        value={skillsData}
+                        onChange={setSkillsData}
                     />}
                 </div>
             </div>
@@ -142,8 +145,8 @@ const Profile = () => {
                     </Tooltip>
                 </h2>
                 <div className="space-y-4 sm:space-y-6 bg-mine-shaft-900 rounded-xl p-4 sm:p-6">
-                    {!edit[3] && experience.map((exp, i) => (
-                        <ExperienceCard key={i} data={exp} />
+                   {experience.map((exp, i) => (
+                        <ExperienceCard key={i} {...exp} isEdit={edit[3]}  />
                     ))}
                 </div>
             </div>

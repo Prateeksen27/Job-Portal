@@ -33,7 +33,7 @@ export const login = async (req,res)=>{
     try{
         const user = await User.find({ email });
         if (!user || user.length === 0) {
-            return res.status(404).json({ message: `$username ${username} not found` });
+            return res.status(404).json({ message: `${email} not found` });
         }
         const isPasswordValid = await bcrypt.compare(password, user[0].password);
         if (!isPasswordValid) {

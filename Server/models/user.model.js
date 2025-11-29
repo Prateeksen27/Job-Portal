@@ -18,8 +18,6 @@ const userSchema = new mongoose.Schema({
     
 },{
     timestamps: true
-},{
-    collection: 'admin'
 });
 
 const User = mongoose.model('job', userSchema);
