@@ -102,7 +102,7 @@ const talents = [
       }
   ];
   const profile={
-    name: "Moningi Sahiti",
+    name: "Akash Swain",
     role: "Software Engineer",
     company: "Google",
     location: "New York, United States",

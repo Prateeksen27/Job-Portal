@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import banner from './../assets/Profile/banner.jpg'
-import avtar from './../assets/avatar1.png'
+import avtar from './../assets/avatar.png'
 import { IconBriefcase2, IconDeviceFloppy, IconMapPin, IconPencil } from '@tabler/icons-react'
 import { ActionIcon, Button, Divider, TagsInput, Textarea, Tooltip } from '@mantine/core'
 import { useParams } from 'react-router-dom'
