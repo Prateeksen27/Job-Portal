@@ -42,7 +42,7 @@ const Footer = () => {
 
       {/* Bottom copyright */}
       <div className="border-t border-mine-shaft-700 py-4 text-center text-mine-shaft-400 text-sm">
-        &copy; 2025 DreamJob. All rights reserved.
+        &copy; 2026 DreamJob. All rights reserved.
       </div>
     </footer>
   )
