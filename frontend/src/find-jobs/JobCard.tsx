@@ -1,4 +1,3 @@
-import React from 'react'
 import microsoft from './../assets/Icons/Microsoft.png'
 import {
   IconClock,

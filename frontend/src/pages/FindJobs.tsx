@@ -1,4 +1,3 @@
-import React from 'react'
 import SearchBar from '../find-jobs/SearchBar'
 import { Divider } from '@mantine/core'
 import Jobs from '../find-jobs/Jobs'

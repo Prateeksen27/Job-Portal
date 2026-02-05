@@ -1,10 +1,7 @@
-import React, { useRef, useState } from 'react'
+import  { useRef, useState } from 'react'
 import {
   IconCurrencyRupee,
-  IconClock,
   IconHeart,
-  IconLocation,
-  IconLocationBolt,
   IconMapPin,
   IconCalendar,
   IconCalendarWeek

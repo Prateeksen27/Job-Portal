@@ -1,6 +1,4 @@
-import React from 'react'
 import dm from '../assets/Category/Digital Marketing.png'
-import dd from '../assets/Category/Arts & Design.png'
 const Card = (props : any) => {
   return (
     <div className="bg-mine-shaft-800 rounded-2xl p-6 w-72 text-center shadow-lg hover:scale-105 transition-transform">

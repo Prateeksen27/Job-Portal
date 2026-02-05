@@ -1,10 +1,5 @@
-import React from 'react'
 import boy from '../assets/Boy.png'
-import { Avatar, TextInput } from '@mantine/core'
 import { IconSearch } from '@tabler/icons-react'
-import ava1 from '../assets/avatar.png'
-import ava2 from '../assets/avatar1.png'
-import ava3 from '../assets/avatar2.png'
 import google from '../assets/Icons/Google.png'
 
 const DreamJob = () => {

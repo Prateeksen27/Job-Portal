@@ -1,4 +1,3 @@
-import React from 'react'
 import { similar } from '../assets/Data/Company'
 import CompanyCard from './CompanyCard'
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import fields from '../assets/Data/Profile'
 import { SelectInput } from './SelectInput'
 import { Textarea, Button, Title } from '@mantine/core'

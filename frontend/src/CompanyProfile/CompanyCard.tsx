@@ -1,14 +1,8 @@
-import React from 'react'
+
 import { IconExternalLink, IconHeart } from '@tabler/icons-react'
 import microsoft from '../assets/Icons/Microsoft.png'
 import { Link } from 'react-router-dom'
 import { Button } from '@mantine/core'
-interface CompanyProps {
-    name: string
-    employees: number
-    website?: string
-    logo?: string
-}
 
 const CompanyCard = (props: any) => {
     const data = props.data

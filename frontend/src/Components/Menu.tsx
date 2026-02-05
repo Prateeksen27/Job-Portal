@@ -1,12 +1,7 @@
 import { Menu, Text, Avatar, Switch } from '@mantine/core';
 import boy from '../assets/avatar.png';
 import {
-    IconSettings,
-    IconSearch,
-    IconPhoto,
     IconMessageCircle,
-    IconTrash,
-    IconArrowsLeftRight,
     IconUserCircle,
     IconFile,
     IconMoon,

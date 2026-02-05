@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Home from './pages/Home';
 import '@mantine/core/styles.css';
 import '@mantine/tiptap/styles.css';
-// ‼️ import carousel styles after core package styles
 import '@mantine/carousel/styles.css';
 import '@mantine/dates/styles.css';
 
@@ -21,12 +20,8 @@ import ApplyJobPage from './pages/ApplyJobPage';
 import CompanyPage from './pages/CompanyPage';
 import PostedJobs from './pages/PostedJobs';
 import JobHistoryPage from './pages/JobHistoryPage';
-import SignInPage from './pages/AuthPages/SignInPage';
 import SignUpPage from './pages/AuthPages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
-
-
-
 
 // ‼️ import tiptap styles after core package styles
 export default function App() {

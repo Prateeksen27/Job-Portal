@@ -1,5 +1,3 @@
-import { Divider } from '@mantine/core';
-import React from 'react';
 import SearchBar from '../find-talent/SearchBar';
 import Talents from '../find-talent/Talents';
 

@@ -1,6 +1,5 @@
-import { Avatar, Button, Divider, Tabs } from '@mantine/core'
-import { IconBriefcase2, IconMapPin } from '@tabler/icons-react'
-import React from 'react'
+import { Avatar, Tabs } from '@mantine/core'
+import { IconMapPin } from '@tabler/icons-react'
 import banner from './../assets/image.png'
 import avtar from './../assets/avatar1.png'
 import google from './../assets/Icons/Google.png'

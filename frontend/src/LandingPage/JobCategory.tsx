@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from '../Components/Card'
 import { Carousel } from '@mantine/carousel'
 import { jobCategory } from '../assets/Data/Data'

@@ -1,5 +1,4 @@
 import { Button, Divider } from '@mantine/core'
-import React from 'react'
 import JobHistory from '../JobHistory/JobHistory'
 import { useNavigate } from 'react-router-dom'
 import { IconArrowLeft } from '@tabler/icons-react'

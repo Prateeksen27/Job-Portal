@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import microsoft from './../assets/Icons/Microsoft.png'
 import { IconChecks, IconClock, IconCurrencyRupee, IconHeart } from '@tabler/icons-react'

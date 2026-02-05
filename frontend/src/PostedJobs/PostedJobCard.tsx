@@ -1,4 +1,3 @@
-import React from 'react'
 
 const PostedJobCard = (props:any) => {
   return (

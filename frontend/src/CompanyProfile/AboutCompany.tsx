@@ -1,4 +1,3 @@
-import React from 'react'
 import { companyData } from '../assets/Data/Company'
 
 const AboutCompany = () => {

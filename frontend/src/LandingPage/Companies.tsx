@@ -1,4 +1,3 @@
-import React from 'react'
 import Marquee from 'react-fast-marquee'
 import amazon from '../assets/Companies/Amazon.png'
 import google from '../assets/Companies/Google.png'

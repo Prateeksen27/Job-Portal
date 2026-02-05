@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Combobox, useCombobox, Text, Box } from '@mantine/core';
+import {  Combobox, useCombobox } from '@mantine/core';
 import { IconAdjustments } from '@tabler/icons-react';
 
 const opt = ['Relevance','Most Recent', 'Salary (Low to High)','Salary (High to Low)'];

@@ -1,6 +1,4 @@
-import { Button, Divider, Tabs } from '@mantine/core'
-import { IconArrowLeft } from '@tabler/icons-react'
-import React from 'react'
+import { Tabs } from '@mantine/core'
 import { jobList } from '../assets/Data/JobsData'
 import Card from './Card'
 

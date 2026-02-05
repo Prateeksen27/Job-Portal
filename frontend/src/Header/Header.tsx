@@ -1,5 +1,3 @@
-import { Avatar } from '@mantine/core';
-import boy from '../assets/avatar.png';
 import {
   IconAnchor,
   IconBell,
@@ -8,7 +6,7 @@ import {
   IconMenu2,
   IconX,
 } from '@tabler/icons-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import NavLinks from './NavLinks';
 import { useAuthStore } from '../store/useAuthStore';
 import { Link } from 'react-router-dom';

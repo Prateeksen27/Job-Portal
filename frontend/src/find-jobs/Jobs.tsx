@@ -1,4 +1,3 @@
-import React from 'react'
 import { Sort } from './Sort'
 import { Divider } from '@mantine/core'
 import JobCard from './JobCard'

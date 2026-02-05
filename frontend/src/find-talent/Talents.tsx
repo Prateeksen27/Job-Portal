@@ -1,4 +1,3 @@
-import React from 'react'
 import { Sort } from '../find-jobs/Sort'
 import { Divider } from '@mantine/core'
 import { talents } from '../assets/Data/TalentData'

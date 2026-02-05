@@ -9,7 +9,6 @@ import {
   useCombobox,
   rem,
 } from '@mantine/core';
-import { IconSearch } from '@tabler/icons-react';
 
 // const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
 

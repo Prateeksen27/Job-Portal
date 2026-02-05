@@ -1,6 +1,5 @@
 import { Button, Divider } from '@mantine/core'
 import { IconArrowLeft } from '@tabler/icons-react'
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Company from '../CompanyProfile/Company'
 import SimilarCompanies from '../CompanyProfile/SimilarCompanies'

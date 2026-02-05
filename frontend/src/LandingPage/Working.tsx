@@ -1,4 +1,3 @@
-import React from 'react'
 import girl from '../assets/Working/Girl.png'
 import img2 from '../assets/Working/Build your resume.png'
 import img3 from '../assets/Working/Apply for job.png'

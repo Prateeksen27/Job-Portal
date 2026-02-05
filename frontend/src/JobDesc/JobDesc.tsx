@@ -1,5 +1,4 @@
-import { IconAdjustments, IconArrowUp, IconExternalLink, IconHeart, IconMapPin } from '@tabler/icons-react'
-import React from 'react'
+import { IconExternalLink, IconHeart, IconMapPin } from '@tabler/icons-react'
 import microsoft from '../assets/Icons/Microsoft.png'
 import { ActionIcon, Button, Divider } from '@mantine/core'
 import { Link } from 'react-router-dom'

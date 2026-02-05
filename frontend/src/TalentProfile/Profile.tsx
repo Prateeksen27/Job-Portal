@@ -1,11 +1,9 @@
-import React from 'react'
 import banner from './../assets/Profile/banner.jpg'
 import avtar from './../assets/avatar1.png'
 import { IconBriefcase2, IconMapPin } from '@tabler/icons-react'
 import { Button, Divider } from '@mantine/core'
 import ExperienceCard from './ExperienceCard'
 import CertificationCard from './CertificationCard'
-import { useParams } from 'react-router-dom'
 import { profile } from '../assets/Data/TalentData'
 
 const Profile = () => {

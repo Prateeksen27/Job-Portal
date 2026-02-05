@@ -1,18 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Divider, Text } from '@mantine/core'
 import ExpInput from './ExpInput'
 
-interface ExperienceProps {
-    data: {
-        title: string
-        company: string
-        location: string
-        startDate: string
-        endDate: string
-        description: string
-        logo?: string
-    }
-}
+
 
 const ExperienceCard = (props: any) => {
     console.log(props);

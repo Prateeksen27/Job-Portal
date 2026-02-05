@@ -1,5 +1,4 @@
 import { IconAnchor, IconBrandFacebook, IconBrandTwitter, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react'
-import React from 'react'
 
 const Footer = () => {
   return (
