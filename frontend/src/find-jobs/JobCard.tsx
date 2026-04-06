@@ -9,9 +9,18 @@ import { Link } from 'react-router-dom'
 
 const JobCard = (props: any) => {
   const l = props.list
+  const jobTitle = l.jobTitle || l.title || ''
+  const company = l.company?.name || l.company || ''
+  const experience = l.experience || l.experienceLevel || ''
+  const jobType = l.jobType || ''
+  const location = l.location || ''
+  const description = l.description || ''
+  const packageValue = l.package || (l.salary ? `${l.salary.min / 100000}-${l.salary.max / 100000}LPA` : 'Not disclosed')
+  const postedDaysAgo = l.postedDaysAgo || (l.createdAt ? Math.floor((Date.now() - new Date(l.createdAt).getTime()) / (1000 * 60 * 60 * 24)) : '')
+  const applicants = l.applicants || 0
 
   return (
-    <Link to="/jobs">
+    <Link to={`/jobs/${l._id || ''}`}>
       <div
         key={props.key}
         className="bg-mine-shaft-900 p-4 sm:w-full  md:w-80 h-60 gap-3 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
@@ -29,9 +38,9 @@ const JobCard = (props: any) => {
                 />
               </div>
               <div>
-                <div className="font-semibold text-sm">{l.jobTitle}</div>
+                <div className="font-semibold text-sm">{jobTitle}</div>
                 <div className="text-xs text-mine-shaft-300">
-                  {l.company} • {l.applicants} Applicants
+                  {company} • {applicants} Applicants
                 </div>
               </div>
             </div>
@@ -43,13 +52,13 @@ const JobCard = (props: any) => {
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-3 text-xs">
             <span className="py-1 px-3 bg-mine-shaft-800 text-bright-sun-400 rounded-lg">
-              {l.experience}
+              {experience}
             </span>
             <span className="py-1 px-3 bg-mine-shaft-800 text-bright-sun-400 rounded-lg">
-              {l.jobType}
+              {jobType}
             </span>
             <span className="py-1 px-3 bg-mine-shaft-800 text-bright-sun-400 rounded-lg">
-              {l.location}
+              {location}
             </span>
           </div>
 
@@ -58,7 +67,7 @@ const JobCard = (props: any) => {
             lineClamp={2}
             className="!text-sm !text-mine-shaft-300 mb-3"
           >
-            {l.description}
+            {description}
           </Text>
         </div>
 
@@ -68,11 +77,11 @@ const JobCard = (props: any) => {
           <div className="flex justify-between items-center mt-3 text-xs text-mine-shaft-300">
             <div className="flex items-center gap-1">
               <IconCurrencyRupee size={16} />
-              <span className="font-medium text-white">{l.package}</span>
+              <span className="font-medium text-white">{packageValue}</span>
             </div>
             <div className="flex items-center gap-1">
               <IconClock size={16} />
-              <span>{l.postedDaysAgo} Days ago</span>
+              <span>{postedDaysAgo} Days ago</span>
             </div>
           </div>
         </div>

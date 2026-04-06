@@ -3,14 +3,34 @@ import {  Combobox, useCombobox } from '@mantine/core';
 import { IconAdjustments } from '@tabler/icons-react';
 
 const opt = ['Relevance','Most Recent', 'Salary (Low to High)','Salary (High to Low)'];
-export const Sort = ()=> {
-  const [selectedItem, setSelectedItem] = useState<string | null>('Relevance');
+
+interface SortProps {
+  value?: string;
+  onChange?: (value: string) => void;
+}
+
+export const Sort: React.FC<SortProps> = ({ value: externalValue, onChange }) => {
+  const [internalValue, setInternalValue] = useState<string | null>('Relevance');
+  
+  const selectedItem = externalValue !== undefined ? externalValue : internalValue;
+  
+  const handleChange = (val: string) => {
+    setInternalValue(val);
+    if (onChange) {
+      const sortValue = val === 'Relevance' ? 'relevance' : 
+                        val === 'Most Recent' ? 'recent' :
+                        val === 'Salary (Low to High)' ? 'salary_asc' :
+                        val === 'Salary (High to Low)' ? 'salary_desc' : 'relevance';
+      onChange(sortValue);
+    }
+  };
+
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
   });
 
   const options = opt.map((item) => (
-   
+    
     <Combobox.Option className='text-xs' value={item} key={item}>
       {item}
     </Combobox.Option>
@@ -24,7 +44,7 @@ export const Sort = ()=> {
         width={150}
         position="bottom-start"
         onOptionSubmit={(val) => {
-          setSelectedItem(val);
+          handleChange(val);
           combobox.closeDropdown();
         }}
       >

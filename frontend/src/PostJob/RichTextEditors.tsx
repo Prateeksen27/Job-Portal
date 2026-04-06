@@ -9,7 +9,7 @@ import { content } from '../assets/Data/PostJob';
 
 
 
-export const RichTextEditors = ()=> {
+export const RichTextEditors = ({ value, onChange }: { value?: string; onChange?: (val: string) => void })=> {
   const editor = useEditor({
     shouldRerenderOnTransaction: true,
     extensions: [
@@ -20,7 +20,12 @@ export const RichTextEditors = ()=> {
       Highlight,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
     ],
-    content: content,
+    content: value || content,
+    onUpdate: ({ editor }) => {
+      if (onChange) {
+        onChange(editor.getHTML())
+      }
+    },
   });
 
   return (

@@ -1,11 +1,22 @@
-import { Button, Divider } from '@mantine/core'
+import { Button, Divider, Loader } from '@mantine/core'
 import { IconArrowLeft } from '@tabler/icons-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import JobDesc from '../JobDesc/JobDesc'
 import RecommenedJobs from '../JobDesc/RecommenedJobs'
+import { axiosInstance } from '../lib/axios'
 
 export const JobPage = () => {
-    const navigate =  useNavigate()
+    const navigate = useNavigate()
+    const { id: jobId } = useParams<{ id: string }>()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        if (jobId) {
+            setLoading(false)
+        }
+    }, [jobId])
+
     return (
         <div className='w-full min-h-[100vh] bg-mine-shaft-950 font-[Poppins]'>
             <Divider mr="xs" size="sm" orientation="horizontal" className="self-stretch" />
@@ -15,7 +26,6 @@ export const JobPage = () => {
             <div className='flex gap-5 justify-around'>
                <JobDesc />
               <div className='hidden lg:flex w-1/3 justify-center'>
-                
                <RecommenedJobs />
               </div>
             
@@ -24,3 +34,4 @@ export const JobPage = () => {
     )
 }
 
+export default JobPage

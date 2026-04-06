@@ -1,11 +1,11 @@
 import { Menu, Text, Avatar, Switch } from '@mantine/core';
 import boy from '../assets/avatar.png';
 import {
-    IconMessageCircle,
     IconUserCircle,
     IconFile,
     IconMoon,
     IconSun,
+    IconBriefcase,
 } from '@tabler/icons-react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useState } from 'react';
@@ -43,8 +43,12 @@ export const MenuComponent = () => {
                 <Link to='/profile'>
                 <Menu.Item leftSection={<IconUserCircle size={14} />}>Profile</Menu.Item>
                 </Link>
+                <Link to='/resume'>
                 <Menu.Item leftSection={<IconFile size={14} />}>Resume</Menu.Item>
-                <Menu.Item leftSection={<IconMessageCircle size={14} />}>Messages</Menu.Item>
+                </Link>
+                <Link to='/invitations'>
+                <Menu.Item leftSection={<IconBriefcase size={14} />}>Invitations</Menu.Item>
+                </Link>
 
                 <Menu.Item
                     leftSection={<IconMoon size={14} />}

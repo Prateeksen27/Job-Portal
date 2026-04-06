@@ -1,4 +1,4 @@
-import { Button, Checkbox, PasswordInput, TextInput } from "@mantine/core";
+import { Button, Checkbox, PasswordInput, Radio, TextInput } from "@mantine/core";
 import { IconAt, IconLock } from "@tabler/icons-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,7 +9,8 @@ const SignUp = () => {
   const [data, setData] = useState({
     username: "",
     email: "",
-    password: ""
+    password: "",
+    role: "JOB_SEEKER"
   });
 
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,7 +29,7 @@ const SignUp = () => {
       return;
     }
 
-    signUp(data);
+    signUp({ username: data.username, email: data.email, password: data.password, role: data.role });
   };
 
   return (
@@ -92,6 +93,17 @@ const SignUp = () => {
           onChange={(e) => setConfirmPassword(e.currentTarget.value)}
           size="md"
         />
+
+        <Radio.Group
+          label="I am a"
+          value={data.role}
+          onChange={(value) => setData({ ...data, role: value })}
+        >
+          <div className="flex gap-6 mt-2">
+            <Radio value="JOB_SEEKER" label="Job Seeker" color="bright-sun.4" />
+            <Radio value="RECRUITER" label="Recruiter" color="bright-sun.4" />
+          </div>
+        </Radio.Group>
 
         <Checkbox
           autoContrast

@@ -1,4 +1,4 @@
-import { IconBriefcase, IconMapPin, IconRecharging, IconSearch } from "@tabler/icons-react";
+import { IconMapPin, IconRecharging, IconSearch } from "@tabler/icons-react";
 import avtar1 from '../avatar.png'
 import avtar2 from '../avatar1.png'
 import avtar3 from '../avatar2.png'

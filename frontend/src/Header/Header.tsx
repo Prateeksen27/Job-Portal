@@ -10,7 +10,7 @@ import { useState } from 'react';
 import NavLinks from './NavLinks';
 import { useAuthStore } from '../store/useAuthStore';
 import { Link } from 'react-router-dom';
-import { MenuComponent } from '../Components/Menu';
+import { MenuComponent } from '../components/Menu';
 
 const Header = () => {
   const { logout } = useAuthStore();

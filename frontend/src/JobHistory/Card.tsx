@@ -3,9 +3,19 @@ import microsoft from './../assets/Icons/Microsoft.png'
 import { IconChecks, IconClock, IconCurrencyRupee, IconHeart } from '@tabler/icons-react'
 import { Divider, Text } from '@mantine/core'
 const Card = (props:any) => {
-    const l = props.list
+    const l = props.list || {}
+    const jobTitle = l.jobTitle || l.title || 'Untitled'
+    const company = l.company?.name || l.company || 'Unknown'
+    const experience = l.experience || l.experienceLevel || ''
+    const jobType = l.jobType || ''
+    const location = l.location || ''
+    const description = l.description || ''
+    const packageValue = l.package || (l.salary ? `${l.salary.min / 100000}-${l.salary.max / 100000}LPA` : 'Not disclosed')
+    const postedDaysAgo = l.postedDaysAgo || (l.createdAt ? Math.floor((Date.now() - new Date(l.createdAt).getTime()) / (1000 * 60 * 60 * 24)) : '')
+    const applicants = l.applicants || 0
+
     return (
-        <Link to="/jobs" >
+        <Link to={`/jobs/${l._id || ''}`} >
             <div
                 key={props.key}
                 className="bg-mine-shaft-900 p-4 md:w-80 sm:w-full h-60 gap-3 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
