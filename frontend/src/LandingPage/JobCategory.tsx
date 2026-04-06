@@ -1,4 +1,4 @@
-import Card from '../Components/Card'
+import Card from '../components/Card'
 import { Carousel } from '@mantine/carousel'
 import { jobCategory } from '../assets/Data/Data'
 

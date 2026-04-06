@@ -11,8 +11,9 @@ import {
     Notification,
 } from "@mantine/core";
 import { IconAt, IconFileCv, IconCheck } from "@tabler/icons-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { axiosInstance } from "../lib/axios";
 
 interface FormData {
     name: string;
@@ -24,6 +25,9 @@ interface FormData {
 }
 
 const ApplyJobComp = () => {
+    const [searchParams] = useSearchParams();
+    const jobId = searchParams.get('jobId');
+    
     const [formData, setFormData] = useState<FormData>({
         name: "",
         email: "",
@@ -36,6 +40,7 @@ const ApplyJobComp = () => {
     const [opened, setOpened] = useState(false);
     const [showNotification, setShowNotification] = useState(false);
     const [countdown, setCountdown] = useState<number | null>(null);
+    const [applying, setApplying] = useState(false);
     const navigate = useNavigate();
 
     // Countdown effect
@@ -52,7 +57,7 @@ const ApplyJobComp = () => {
         return () => clearTimeout(timer);
     }, [countdown, navigate]);
 
-    const handleApply = (e?: React.FormEvent) => {
+    const handleApply = async (e?: React.FormEvent) => {
         if (e) e.preventDefault();
         if (
             !formData.name ||
@@ -65,14 +70,37 @@ const ApplyJobComp = () => {
             return;
         }
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+        if (!jobId) {
+            toast.error("No job selected");
+            return;
+        }
 
-        setOpened(false);
-        setShowNotification(true);
-        setCountdown(5);
+        try {
+            setApplying(true);
+            
+            const formDataToSend = new FormData();
+            formDataToSend.append('jobId', jobId);
+            formDataToSend.append('coverLetter', formData.about);
+            formDataToSend.append('resume', formData.cv as File);
+
+            await axiosInstance.post('/applications/apply', formDataToSend, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+
+            setOpened(false);
+            setShowNotification(true);
+            setCountdown(5);
+            toast.success("Application submitted successfully!");
+        } catch (error: any) {
+            toast.error(error.response?.data?.message || "Failed to apply for job");
+        } finally {
+            setApplying(false);
+        }
     };
 
     return (
@@ -253,6 +281,7 @@ const ApplyJobComp = () => {
                         variant="filled"
                         className="!text-sm !bg-bright-sun-400 !text-black hover:!bg-bright-sun-500"
                         onClick={handleApply}
+                        loading={applying}
                     >
                         Apply
                     </Button>

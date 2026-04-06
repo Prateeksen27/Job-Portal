@@ -1,17 +1,25 @@
 import { Combobox, InputBase, ScrollArea, useCombobox } from '@mantine/core';
 import { useEffect, useState } from 'react';
 
-export const SelectInput = (props: any) => {
+interface SelectInputProps {
+    label: string;
+    placeholder: string;
+    options: string[];
+    value?: string | null;
+    onChange?: (value: string) => void;
+}
+
+export const SelectInput = (props: SelectInputProps) => {
     useEffect(() => {
         setData(props.options)
-    })
+    }, [props.options])
     const combobox = useCombobox({
         onDropdownClose: () => combobox.resetSelectedOption(),
     });
 
     const [data, setData] = useState<string[]>([]);
-    const [value, setValue] = useState<string | null>(null);
-    const [search, setSearch] = useState('');
+    const [value, setValue] = useState<string | null>(props.value || null);
+    const [search, setSearch] = useState(props.value || '');
 
     const exactOptionMatch = data.some((item) => item === search);
     const filteredOptions = exactOptionMatch
@@ -24,21 +32,24 @@ export const SelectInput = (props: any) => {
         </Combobox.Option>
     ));
 
+    const handleOptionSubmit = (val: string) => {
+        if (val === '$create') {
+            setData((current) => [...current, search]);
+            setValue(search);
+            props.onChange?.(search);
+        } else {
+            setValue(val);
+            setSearch(val);
+            props.onChange?.(val);
+        }
+        combobox.closeDropdown();
+    }
+
     return (
         <Combobox
             store={combobox}
             withinPortal={false}
-            onOptionSubmit={(val) => {
-                if (val === '$create') {
-                    setData((current) => [...current, search]);
-                    setValue(search);
-                } else {
-                    setValue(val);
-                    setSearch(val);
-                }
-
-                combobox.closeDropdown();
-            }}
+            onOptionSubmit={handleOptionSubmit}
         >
             <Combobox.Target>
                 <InputBase

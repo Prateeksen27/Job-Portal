@@ -7,15 +7,19 @@ import {
   Pill,
   PillsInput,
   useCombobox,
-  rem,
 } from '@mantine/core';
 
-// const groceries = ['🍎 Apples', '🍌 Bananas', '🥦 Broccoli', '🥕 Carrots', '🍫 Chocolate'];
-
-export const MultiInput = (props: any) => {
+export const MultiInput = (props: {
+  title: string;
+  icon: any;
+  options: string[];
+  value?: string;
+  onChange?: (value: string) => void;
+}) => {
   useEffect(() => {
     setData(props.options)
-  }, [])
+  }, [props.options])
+  
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
     onDropdownOpen: () => combobox.updateSelectedOptionIndex('active'),
@@ -23,7 +27,27 @@ export const MultiInput = (props: any) => {
 
   const [search, setSearch] = useState('');
   const [data, setData] = useState<string[]>([]);
-  const [value, setValue] = useState<string[]>([]);
+  const [internalValue, setInternalValue] = useState<string[]>([]);
+
+  // Use external value if provided, otherwise use internal state
+  const value = props.value !== undefined ? (props.value ? [props.value] : []) : internalValue;
+  
+  const handleSetValue = (val: string[] | ((prev: string[]) => string[])) => {
+    if (typeof val === 'function') {
+      const newValue = val(props.value ? [props.value] : internalValue);
+      if (props.onChange) {
+        props.onChange(newValue.join(', '));
+      } else {
+        setInternalValue(newValue);
+      }
+    } else {
+      if (props.onChange) {
+        props.onChange(val.join(', '));
+      } else {
+        setInternalValue(val);
+      }
+    }
+  };
 
   const exactOptionMatch = data.some((item) => item === search);
 
@@ -31,16 +55,16 @@ export const MultiInput = (props: any) => {
     setSearch('');
     if (val === '$create') {
       setData((current) => [...current, search]);
-      setValue((current) => [...current, search]);
+      handleSetValue((current) => [...current, search]);
     } else {
-      setValue((current) =>
-        current.includes(val) ? current.filter((v) => v !== val) : [...current, val]
+      handleSetValue((current) =>
+        current.includes(val) ? current.filter((v: string) => v !== val) : [...current, val]
       );
     }
   };
 
   const handleValueRemove = (val: string) =>
-    setValue((current) => current.filter((v) => v !== val));
+    handleSetValue((current) => current.filter((v: string) => v !== val));
 
   const values = value.slice(0, 2).map((item) => (
     <Pill

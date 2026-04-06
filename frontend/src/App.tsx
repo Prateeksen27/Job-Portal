@@ -1,4 +1,4 @@
-import { createTheme, MantineProvider, Text } from '@mantine/core';
+import { createTheme, MantineProvider } from '@mantine/core';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import '@mantine/core/styles.css';
@@ -19,9 +19,13 @@ import { JobPage } from './pages/JobPage';
 import ApplyJobPage from './pages/ApplyJobPage';
 import CompanyPage from './pages/CompanyPage';
 import PostedJobs from './pages/PostedJobs';
+import PostedJobDetails from './pages/PostedJobDetails';
+import JobApplicants from './pages/JobApplicants';
 import JobHistoryPage from './pages/JobHistoryPage';
 import SignUpPage from './pages/AuthPages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
+import ResumePage from './pages/ResumePage';
+import InvitationsPage from './pages/InvitationsPage';
 
 // ‼️ import tiptap styles after core package styles
 export default function App() {
@@ -56,7 +60,7 @@ export default function App() {
   primaryColor: "bright-sun",
   fontFamily: "Poppins, sans-serif",
 });
-  const {user,isAuthenticated}= useAuthStore()
+  const { isAuthenticated } = useAuthStore()
 
   return (
     <MantineProvider defaultColorScheme='dark' theme={theme}>
@@ -67,14 +71,19 @@ export default function App() {
         <Routes>
           <Route path='/' element={isAuthenticated?<Home />:<Navigate to='/login' />} />
           <Route path="/find-jobs" element={isAuthenticated?<FindJobs />:<Navigate to='/login' />} />    
-          <Route path="/jobs" element={isAuthenticated?<JobPage />:<Navigate to='/login' />} />    
+          <Route path="/jobs" element={isAuthenticated?<JobPage />:<Navigate to='/login' />} />
+          <Route path="/jobs/:id" element={isAuthenticated?<JobPage />:<Navigate to='/login' />} />    
           <Route path="/apply-job" element={isAuthenticated?<ApplyJobPage />:<Navigate to='/login' />} />    
-          <Route path="/posted-jobs" element={isAuthenticated?<PostedJobs />:<Navigate to='/login' />} />    
+          <Route path="/posted-jobs" element={isAuthenticated?<PostedJobs />:<Navigate to='/login' />} />
+          <Route path="/posted-jobs/:id" element={isAuthenticated?<PostedJobDetails />:<Navigate to='/login' />} />
+          <Route path="/job-applicants/:id" element={isAuthenticated?<JobApplicants />:<Navigate to='/login' />} />    
           <Route path="/find-talent" element={isAuthenticated?<FindTalent />:<Navigate to='/login' />} />      
           <Route path="/history" element={isAuthenticated?<JobHistoryPage />:<Navigate to='/login' />} />      
           <Route path="/company-profile" element={isAuthenticated?<CompanyPage />:<Navigate to='/login' />} />      
           <Route path="/talent-profile/:id" element={isAuthenticated?<TalentProfile />:<Navigate to='/login' />} />  
           <Route path="/profile" element={isAuthenticated?<ProfilePage />:<Navigate to='/login' />} /> 
+          <Route path="/resume" element={isAuthenticated?<ResumePage />:<Navigate to='/login' />} />
+          <Route path="/invitations" element={isAuthenticated?<InvitationsPage />:<Navigate to='/login' />} />
           <Route path="/post-job" element={isAuthenticated?<PostJobPage />:<Navigate to='/login' />} />   
           <Route path='/login' element={isAuthenticated?<Navigate to='/' />:<SignUpPage />} />
           <Route path='/signup'element={isAuthenticated?<Navigate to='/' />:<SignUpPage />}/>

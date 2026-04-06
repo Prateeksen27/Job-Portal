@@ -1,8 +1,32 @@
+import { useState, useEffect } from 'react'
 import { Tabs } from "@mantine/core"
-import { activeJobs } from "../assets/Data/PostedJob"
 import PostedJobCard from "./PostedJobCard"
+import { axiosInstance } from '../lib/axios'
 
 const PostedJob = () => {
+    const [activeJobs, setActiveJobs] = useState<any[]>([])
+    const [draftJobs, setDraftJobs] = useState<any[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+        const fetchMyJobs = async () => {
+            try {
+                setLoading(true)
+                const response = await axiosInstance.get('/jobs/my-jobs')
+                if (response.data && response.data.jobs) {
+                    setActiveJobs(response.data.jobs.filter((j: any) => j.status === 'open'))
+                    setDraftJobs(response.data.jobs.filter((j: any) => j.status === 'closed'))
+                }
+            } catch (err: any) {
+                setError(err.response?.data?.message || 'Failed to fetch jobs')
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchMyJobs()
+    }, [])
+
     return (
         <div className="w-full sm:w-1/3 lg:w-1/5 mt-5 px-3 sm:px-4">
             {/* Title */}
@@ -23,17 +47,31 @@ const PostedJob = () => {
 
                 <Tabs.Panel value="active" className="mt-4">
                     <div className="flex flex-col gap-4">
-                        {
-                            activeJobs.map((job,index)=>{
-                                return(
-                                    <PostedJobCard key={index} {...job} />
-                                )
-                            })
-                        }
+                        {loading ? (
+                            <p>Loading...</p>
+                        ) : error ? (
+                            <p className="text-red-500">{error}</p>
+                        ) : activeJobs.length === 0 ? (
+                            <p>No active jobs</p>
+                        ) : (
+                            activeJobs.map((job: any, index: number) => (
+                                <PostedJobCard key={job._id || index} {...job} />
+                            ))
+                        )}
                     </div>
                 </Tabs.Panel>
                 <Tabs.Panel value="draft" className="mt-4">
-                    Second panel
+                    <div className="flex flex-col gap-4">
+                        {loading ? (
+                            <p>Loading...</p>
+                        ) : draftJobs.length === 0 ? (
+                            <p>No draft jobs</p>
+                        ) : (
+                            draftJobs.map((job: any, index: number) => (
+                                <PostedJobCard key={job._id || index} {...job} />
+                            ))
+                        )}
+                    </div>
                 </Tabs.Panel>
             </Tabs>
         </div>

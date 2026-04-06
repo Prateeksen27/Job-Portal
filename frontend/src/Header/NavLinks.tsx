@@ -1,20 +1,25 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useAuthStore } from '../store/useAuthStore'
 
 const NavLinks = ({ mobile = false, onClick = () => {} }) => {
   const location = useLocation()
+  const role = useAuthStore((state) => state.role)
 
-  const links = [
+  const jobSeekerLinks = [
     { name: 'Find Jobs', path: '/find-jobs' },
+    { name: 'Job History', path: '/history' },
+  ]
+
+  const recruiterLinks = [
     { name: 'Find Talent', path: '/find-talent' },
     { name: 'Post Job', path: '/post-job' },
     { name: 'Posted Jobs', path: '/posted-jobs' },
-    { name: 'History', path: '/history' },
-
   ]
+
+  const links = role === 'RECRUITER' ? recruiterLinks : jobSeekerLinks
 
   return (
     <>
-      {/* Desktop Nav */}
       {!mobile && (
         <div className="hidden md:flex items-center gap-8 text-lg font-medium">
           {links.map((link, index) => {
@@ -44,7 +49,6 @@ const NavLinks = ({ mobile = false, onClick = () => {} }) => {
         </div>
       )}
 
-      {/* Mobile Nav */}
       {mobile && (
         <div className="flex flex-col gap-4 text-lg font-medium">
           {links.map((link, index) => {
@@ -53,7 +57,7 @@ const NavLinks = ({ mobile = false, onClick = () => {} }) => {
               <Link
                 key={index}
                 to={link.path}
-                onClick={onClick} // safe now ✅
+                onClick={onClick}
                 className={`transition-all duration-300 ${
                   isActive
                     ? 'text-bright-sun-400'

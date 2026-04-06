@@ -2,12 +2,14 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { axiosInstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
-import { em } from "@mantine/core";
 
 export const useAuthStore = create(
   persist(
     (set) => ({
       user: null,
+      token: null,
+      refreshToken: null,
+      role: null,
       isAuthenticated: false,
 
       login: async ({email,password}) => {
@@ -17,43 +19,45 @@ export const useAuthStore = create(
             email,
             password
           });
-          set({ user: response.data.user, isAuthenticated: true });
-          toast.success(`Welcome to CMS, ${response.data.user.username}!`,{id:loadingToast});
+          const { user, token, refreshToken } = response.data;
+          set({ user, token, refreshToken, role: user.role, isAuthenticated: true });
+          toast.success(`Welcome, ${user.username}!`,{id:loadingToast});
         } catch (error) {
           console.error(error);
           toast.error(error.response?.data?.message || "Login failed",{id:loadingToast});
         }
       },
 
-      signUp: async ({username,email,password}) => {
+      signUp: async ({username,email,password,role}) => {
         const loadingToast = toast.loading("Signing up...");
         try {
           const response = await axiosInstance.post("/auth/register", {
             username,
             email,
-            password
+            password,
+            role: role || "JOB_SEEKER"
           });
-          set({ user: response.data.user, isAuthenticated: true });
-          console.log(response.data);
-          toast.success(`Welcome to CMS,! ${response.data.user.username}`,{id:loadingToast});
+          const { user, token, refreshToken } = response.data;
+          set({ user, token, refreshToken, role: user.role, isAuthenticated: true });
+          toast.success(`Welcome, ${user.username}!`,{id:loadingToast});
         } catch (error) {
           console.error(error);
           toast.error(error.response?.data?.message || "Sign up failed",{id:loadingToast});
         }
       },
 
-      logout: () => {
+      logout: async () => {
         try {
-          set({ user: null, isAuthenticated: false });
-          toast.success("Logout successful");
+          await axiosInstance.post("/auth/logout");
         } catch (error) {
-          console.error(error);
-          toast.error(error.response?.data?.message || "Logout failed");
+          console.error("Logout error:", error);
         }
+        set({ user: null, token: null, refreshToken: null, role: null, isAuthenticated: false });
+        toast.success("Logout successful");
       },
     }),
     {
-      name: "auth-storage", // localStorage key
+      name: "auth-storage",
     }
   )
 );
